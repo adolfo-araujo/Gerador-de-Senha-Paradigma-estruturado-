@@ -1,0 +1,38 @@
+import random
+import string
+
+# Função para gerar senha
+
+def gerar_senha(tamanho, usar_maiusculas, usar_numeros, usar_simbolos):
+    caracteres = string.ascii_lowercase  # letras minúsculas
+
+    if usar_maiusculas:
+        caracteres += string.ascii_uppercase
+    if usar_numeros:
+        caracteres += string.digits
+    if usar_simbolos:
+        caracteres += string.punctuation
+
+    senha = ''.join(random.choice(caracteres) for _ in range(tamanho))
+    return senha
+
+# Função principal
+
+def main():
+    print("=== GERADOR DE SENHAS ===\n")
+    
+    tamanho = int(input("Digite o tamanho da senha desejada: "))
+    
+    usar_maiusculas = input("Incluir letras maiúsculas? (sim/não): ").lower() == 's'
+    usar_numeros = input("Incluir números? (sim/não): ").lower() == 's'
+    usar_simbolos = input("Incluir símbolos? (sim/não): ").lower() == 's'
+    
+    senha = gerar_senha(tamanho, usar_maiusculas, usar_numeros, usar_simbolos)
+    
+    print("\nSenha gerada:")
+    print(senha)
+    print("\não========================")
+
+# Execução
+if __name__ == "__main__":
+    main()
